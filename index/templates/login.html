@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+	{% block title%}
+	天天果园-登录
+	{% endblock %}
+	</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	{% block style %}
+	{% endblock %}
+	<script src="{% static 'js/jquery-1.11.3.js' %}"></script>
+	<script>
+		$(function(){
+			$('#login').mouseover(function(){
+				$('#login').css({
+					'background':'#66A032',
+					'color':'#fff',
+				});
+				$('#register').css({
+					'background': '#F4FFEE',
+					'color': '#66A032',
+				});
+			});
+			$('#register').mouseover(function(){
+				$('#login').css({
+					'background': '#F4FFEE',
+					'color': '#66A032',
+				});
+				$('#register').css({
+					'background':'#66A032',
+					'color':'#fff',
+				});
+			});
+			$("#btn").mouseover(function(){
+				$('#btn').css({
+					'background':'#66A032',
+					'color':'#fff',
+				});
+			});
+			$("#btn").mouseout(function(){
+				$('#btn').css({
+					'background': '#F4FFEE',
+					'color': '#9DAD82',
+				});
+			});
+		});
+	</script>
+	{% block script %}
+	{% endblock %}
+</head>
+<body>
+	<div id="content">
+		<div id="loginword">
+			{% block regi_title%}
+			<h2>会员登录</h2>
+			{% endblock %}
+		</div>
+		
+		<div id="leftpart">
+		<img src="{% static 'images/huiyuan.jpg' %}" >
+			{% block btn%}
+			<a href="{% url 'register' %}" id="btn">会员注册</a>
+			{% endblock %}
+		</div>
+		<div id="rightpart">
+			{% block form %}
+			<form action="{% url 'login' %}" method="post">
+				{% csrf_token %}
+				<table align="center" cellpadding="20px">
+					<tr >
+						<td><label class="self">手机号</label></td>
+						<td><input type="text" name="phone"></td>
+					</tr>
+					<tr >
+						<td><label class="self">密&nbsp;&nbsp;码</label></td>
+						<td><input type="password" name="pwd"></td>
+					</tr>
+					<!-- {% for obj in form %}
+						<tr>
+							<td>{{obj.label}}</td>
+							<td>{{obj}}</td>
+						</tr>
+					{% endfor %} -->
+					<!-- {{form.as_table}} -->
+				</table>
+				<input type="checkbox" id="memopwd" name="isSaved">
+				<label for="memopwd">记住密码</label>
+				<a href="#">忘记密码?</a>
+				<a href="#" id="qlogin">快速登录</a>
+				<div>
+					<input type="submit" id="login" value="登录">
+					<a id="register" href="{% url 'register' %}">会员注册</a>
+				</div>
+			</form>
+			{% endblock %}
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>forms示例</title>
+</head>
+<body>
+    <form action="/06_forms/" method="post">
+        {% csrf_token %}
+        <!-- 手动解析 -->
+        <!-- {% for obj in form %}
+            <p>
+            {{obj.label}}:{{obj}}
+            </p>
+                
+        {% endfor %} -->
+        <!-- 自动解析 -->
+        <!-- {{form.as_p}} -->
+        <!-- <ul>
+            {{form.as_ul}}
+        </ul> -->
+        <table>
+            {{form.as_table}}
+        </table>
+        <p>
+            <input type="submit" value="提交">
+        </p>
+    </form>
+</body>
+</html>

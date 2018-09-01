@@ -1,0 +1,122 @@
+body,p,h1,h2,h3,h4,h5,ul,ol{
+	margin: 0px;
+	padding: 0px;
+}
+#content{
+	margin-top: 100px;
+	/*padding-left:  42px;*/
+	/*padding-right: 150px;*/
+	padding-top: 33px;
+	width: 990px;
+	height: 497px;
+	background: #fff;
+	margin: 0px auto;
+}
+label{
+	color: #8D8C8A;
+	font-size: 22px;
+}
+h2{
+	color: #8D8C8A;
+	font-weight: normal;
+}
+#loginword{
+	width: 990px;
+	height: 50px;
+	/*background: #C7CBD1;*/
+	border-bottom: 1px solid #CCCCCC;
+}
+#leftpart{
+	width: 500px;
+	height: 400px;
+	margin-top: 30px;
+	float: left;
+	position: relative;
+}
+#leftpart>a{
+	position: relative;
+	left: 170px;
+	top: -60px;
+	border: 1px solid #889873;
+	border-radius: 5px;
+	padding: 9px 40px;
+	font-size: 20px;
+	text-decoration: none;
+	color: #9DAD82;
+}
+#rightpart{
+	width: 490px;
+	height: 400px;
+	margin-top: 30px;
+	/*background: #EAF7B7;*/
+	float: right;
+
+}
+.self{
+	font-size: 18px;
+}
+form{
+	margin-top: 30px;
+}
+form>input,table input{
+	width: 300px;
+	height: 40px;
+	padding-left: 10px;
+	border: 1px solid #ccc;
+	font-size: 20px;
+	border-radius: 5px;
+	/*元素width=内容宽度+左右border+左右padding
+	  元素height=内容高度+上下border+上下padding
+	*/
+	box-sizing: border-box;
+	/*元素轮廓*/
+	outline: none;
+	/*垂直对齐：控制单前元素两端文本相对于当前元素的垂直对齐方式
+	  top:顶部对齐
+	  middle：居中对齐
+	  bottom底部对齐
+	  baseline：基线对齐*/
+	vertical-align: middle;
+}
+#memopwd{
+	width: 15px;
+	height: 15px;
+	margin-left: 140px;
+}
+form>label{
+	font-size: 16px;
+	color: #000;
+}
+form>a{
+	color: #8D8C8A;
+	margin-left: 60px;
+}
+#qlogin{
+	margin-left: 15px;
+}
+#login{
+	background: #66A032;
+	color: #fff;
+	width: 145px;
+	height: 40px;
+	margin-left: 143px;
+	font-size: 20px;
+	border-radius: 5px;
+	padding: 7px 30px;
+	text-align: center;
+	border-style: none;
+	margin-top: 43px;
+}
+#register{
+	background: #F4FFEE;
+	color: #66A032;
+	width: 145px;
+	height: 40px;
+	margin-left: 10px;
+	line-height: 40px;
+	font-size: 20px;
+	border-radius: 5px;
+	padding: 7px 30px;
+	margin-top: 43px;
+	text-decoration: none;
+}

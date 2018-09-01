@@ -1,0 +1,119 @@
+{% extends 'login.html' %}
+{#{% load static %}#}
+{% block style%}
+    <style>
+        form{
+            margin-top: 7px;
+        }
+        #login, #register{
+            margin-top: 10px;
+        }
+        #phoneExsit{
+            /*float: left;*/
+            color: red;
+            margin-left: 46px;
+            
+        }
+
+    </style>
+{% endblock %}
+{##}
+
+
+{% block title%}
+    天天果园-注册
+{% endblock %}
+
+{% block regi_title %}
+    <h2>会员注册</h2>
+{% endblock %}
+
+{% block btn %}
+    <a href="{% url 'login' %}" id="btn">会员登录</a>
+{% endblock %}
+
+{% block form %}
+    <form action="/register_forms/" method="post" id="formReg" onsubmit="return getData()">
+    {% csrf_token %}
+        <table align="center" cellpadding="12px">
+            <tr >
+                <td><label class="self" id="phlab">手机号</label></td>
+                <td><input type="text" name="phone" id="phone" value="{{sphone}}"></td>
+            </tr>
+            <tr>
+                <span id="phoneExsit">{{errMsg}}</span>
+                
+            </tr>
+            <tr >
+                <td><label class="self">密&nbsp;&nbsp;码</label></td>
+                <td><input type="password" name="pwd" id="pwd1"></td>
+            </tr>
+            <tr >
+                <td><label class="self">确认密码</label></td>
+                <td><input type="password" name="pwd" id="pwd2"></td>
+            </tr>
+            <tr >
+                <td><label class="self">用户名称</label></td>
+                <td><input type="text" name="uname" value="{{sname}}"></td>
+            </tr>
+            <tr >
+                <td><label class="self">邮&nbsp;&nbsp;箱</label></td>
+                <td><input type="email" name="email" value="{{semail}}"></td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" id="login" value="注册">
+            <a id="register" href="{% url 'login' %}">会员登录</a>
+        </div>
+    </form>
+{% endblock %}
+
+{% block script %}
+{#    <script src='/static/js/jquery-1.11.3.js'></script>#}
+    <script>
+        function getData(){
+            var $pwd1 = $('#pwd1');
+            var $pwd2 = $('#pwd2');
+            
+            if ($pwd2.val() != $pwd1.val()) {
+                console.log("密码不一致");
+                return false
+            } else {
+                console.log('密码一致,可以提交');
+                return true
+
+            }
+        }
+        $(function(){
+            $("#phone").blur(function(){
+                check_phone();
+                if($('#phoneExsit').html().length<6){
+                    return false
+                } else{
+                    return true
+                }
+            });
+        });
+
+        function check_phone(){
+            var $phoneval = $('#phone').val();
+            // console.log($phoneval);
+            var status;
+            if ($phoneval.length==0) {
+                return
+            }
+            $.get('/regverify/','uphone='+$phoneval,function(data){
+                    console.log(data.errMsg);
+                    $('#phoneExsit').html(data.errMsg);
+                    if( status == 1){
+                        // 手机号已存在,要组止表单提交
+                        $("#phoneExsit").css('color', 'red'); 
+                    } else {
+                        // $('#phoneExsit').html(data.errMsg);
+                        $("#phoneExsit").css('color', 'green');
+                }
+
+            },'json');
+        }
+    </script>
+{% endblock %}
